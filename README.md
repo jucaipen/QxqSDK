@@ -29,7 +29,9 @@ mPickData:存放选择图片的数组
 PhotoPickUtil.newInstance().startPhotoPickToOne(getActivity());
 ```
 * 回调函数 <br>
+
 ```java
+//在程序的onActivityResult中调用如下回调函数
 PhotoPickUtil.newInstance().onActivityResult(requestCode,requestCode,data, new PhotoPickResult() {
                 @Override 
                 public void OneImage(String path) {
