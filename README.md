@@ -173,3 +173,31 @@ QxqHttpUtil.onBind().post("your url", map, new OnHttpCallBackListener() {
                     }
                 });
 ```
+
+4、文件下载
+-------
+
+
+5、文件上传
+-------
+
+
+
+6、程序检查更新
+-------
+```java
+注:服务器返回的json数据应为如下格式
+{
+    "data": {
+        "version_number": "1.0",
+        "url": "your apk downlod url",
+        "content": "your update message"
+    }
+}
+
+UpdateManager.init().setContext(getActivity())
+                        .setUpdateUrl("your url")//你的更新地址
+                        .setUpdateFilePath("")//设置下载后apk的存放路径
+                        .setUpdateFileName("")//设置下载后apk的名字
+                        .getVersion();
+```
