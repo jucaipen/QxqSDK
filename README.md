@@ -73,8 +73,7 @@ showToast(String msg, int duration,int gravity);
 
 * QxqUtils
 
-
-详情请见
+详情请见https://github.com/qxq5434/QxqSDK/blob/master/QxqUtils
 
 
 2、图片选择器
@@ -103,6 +102,27 @@ PhotoPickUtil.newInstance().onActivityResult(requestCode,requestCode,data, new P
                   //arrayList:选择的图片数组
                 }
             });
+```
+
+* 注册相关Activity
+```xml
+<activity
+    android:name="com.qxq.photopick.PhotoPickActivity"
+    android:configChanges="orientation|keyboardHidden"
+    android:screenOrientation="portrait"
+    >
+</activity>
+<activity
+    android:name="com.qxq.photopick.PhotoPickDetailActivity"
+    android:configChanges="orientation|keyboardHidden"
+    android:screenOrientation="portrait"
+    />
+<activity
+    android:name="com.qxq.photopick.CropImageUIActy"
+    android:configChanges="orientation|keyboardHidden"
+    android:screenOrientation="portrait"
+    />
+
 ```
 
 3、网络请求
