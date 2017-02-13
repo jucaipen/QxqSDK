@@ -63,12 +63,12 @@ QxqHttpUtil.onBind().get("your url",
 >参数
 >>url:你需要请求的url地址
 
->>Map<String,String>:你需要请求的参数集
+>>map:你需要请求的参数集
 
 >>OnHttpCallBackListener:请求完成后的回调函数
 
 ```java
-QxqHttpUtil.onBind().post("your url", new HashMap<String, String>(), new OnHttpCallBackListener() {
+QxqHttpUtil.onBind().post("your url", map, new OnHttpCallBackListener() {
                     @Override
                     public void onComplete(String json) {
                         ShowLog("json..."+json);
