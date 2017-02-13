@@ -6,6 +6,16 @@ QxqSDK
 
 
 ------
+
+Android Studio依赖方法
+-------
+
+在工程的build.gradle中添加如下代码,一步轻松搞定
+
+```java
+compile 'com.github.qxq.library:qxqsdk:1.0.1'
+```
+
 1、图片选择器
 -------
  
