@@ -1,6 +1,12 @@
 QxqSDK
 ====
-图片选择器
+
+提供各种工具类、网络请求、文件上传下载、图片选择、应用检查更新等功能,极大的提升了开发的效率<br><br>
+更多功能正在完善中......
+
+
+------
+1、图片选择器
 -------
  
 * 多图选择 <br>
@@ -24,4 +30,53 @@ PhotoPickUtil.newInstance().onActivityResult(requestCode,requestCode,data, new P
                   //arrayList:选择的图片数组
                 }
             });
+```
+
+2、网络请求
+-------
+
+* GET请求
+
+>参数
+>>url:你需要请求的url地址
+
+
+>>OnHttpCallBackListener:请求完成后的回调函数
+
+
+```java
+QxqHttpUtil.onBind().get("your url",
+                        new OnHttpCallBackListener() {
+                            @Override
+                            public void onComplete(String json) {
+                                ShowLog("json..."+json);
+                            }
+
+                            @Override
+                            public void onError(String error) {
+                                ShowLog("error..."+error);
+                            }
+                        });
+```
+* POST请求
+
+>参数
+>>url:你需要请求的url地址
+
+>>Map<String,String>:你需要请求的参数集
+
+>>OnHttpCallBackListener:请求完成后的回调函数
+
+```java
+QxqHttpUtil.onBind().post("your url", new HashMap<String, String>(), new OnHttpCallBackListener() {
+                    @Override
+                    public void onComplete(String json) {
+                        ShowLog("json..."+json);
+                    }
+
+                    @Override
+                    public void onError(String error) {
+                        ShowLog("error..."+error);
+                    }
+                });
 ```
