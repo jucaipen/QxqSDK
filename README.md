@@ -128,7 +128,7 @@ PhotoPickUtil.newInstance().onActivityResult(requestCode,requestCode,data, new P
 QxqHttpUtil
 -------
 
-运用RxJava+Retrofit2+OkHttp完成
+运用RxJava+Retrofit2+OkHttp完成以下功能
 
 >功能
 
@@ -195,8 +195,6 @@ QxqHttpUtil.onBind().post("your url", map, new OnHttpCallBackListener() {
                     }
                 });
 ```
-文件上传下载也需要在你的Application中初始化QxqHttpUtil<br>
-如果之前已经初始化，则不需要重复添加
 4、文件下载
 -------
 
