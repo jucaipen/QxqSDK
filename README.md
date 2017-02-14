@@ -1,7 +1,7 @@
 QxqSDK
 ====
 
-提供各种工具类、网络请求、文件上传下载、图片选择、应用检查更新等功能，极大的提升了开发的效率<br><br>
+提供各种工具类、网络请求、文件上传下载、图片选择、图片加载、应用检查更新等功能，极大的提升了开发的效率<br><br>
 更多功能正在完善中......
 
 
@@ -15,7 +15,75 @@ Android Studio依赖方法
 ```java
 compile 'com.github.qxq.library:qxqsdk:1.0.1'
 ```
+基类
+-------
 
+* QxqBaseActivity <br>
+Activity的基类
+
+* QxqBaseFragment <br>
+Fragment的基类
+
+* QxqBaseSwipeBackActivity <br>
+带有滑动返回功能的Activity的基类
+
+* QxqBaseMVPActivity <br>
+MVP架构的Activity基类
+
+* QxqBaseMVPSwipeBackActivity <br>
+带有滑动返回的MVP架构的Activity基类
+
+继承以上基类需实现以下四个抽象方法<br>
+```java
+
+/**
+ * 初始化布局
+ */
+protected abstract void initLayout();
+
+/**
+ * 初始化数据
+ */
+protected abstract void initData();
+
+/**
+ * 设置控件事件
+ */
+protected abstract void initListener();
+
+/**
+ * 设置界面视图
+ */
+protected abstract void setContentView();
+
+```
+基类自带一个加载方法<br>
+```java
+//加载
+showLoadingDialog(this,"正在加载...");
+//注:this必须为Activity
+
+//关闭
+if(dlg != null)
+   dlg.dismiss();
+
+```
+基类自带Activity跳转方法<br>
+```java
+startAnimActivity(TestActivity.class,new String[]{"参数名1","参数名2"},new String[]{"参数值1","参数值2"});
+```
+基类自带Activity返回方法<br>
+```java
+backAnimActivity();
+```
+基类自带权限管理方法(Activity)
+```java
+//你程序用到的权限集
+String[] mPermissionList = new String[]{
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.CALL_PHONE};
+checkPermission(mPermissionList);
+```
 1、工具类
 -------
 * ToastUtil
@@ -339,3 +407,5 @@ UpdateManager.init().setContext(getActivity())
                         .setUpdateFileName("")//设置下载后apk的名字
                         .getVersion();
 ```
+7、图片加载
+-------
