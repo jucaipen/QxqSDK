@@ -125,6 +125,28 @@ PhotoPickUtil.newInstance().onActivityResult(requestCode,requestCode,data, new P
 
 ```
 
+QxqHttpUtil
+-------
+
+运用RxJava+Retrofit2+OkHttp完成
+
+>功能
+
+>>get、post网络请求
+
+>>文件上传
+
+>>文件下载
+
+
+在你的Application中初始化QxqHttpUtil
+```java
+
+QxqHttpUtil.initSDK(getApplicationContext());
+QxqHttpUtil.onBind().setBaseUrl("your baseurl");
+
+```
+
 3、网络请求
 -------
 
@@ -173,15 +195,133 @@ QxqHttpUtil.onBind().post("your url", map, new OnHttpCallBackListener() {
                     }
                 });
 ```
-
+文件上传下载也需要在你的Application中初始化QxqHttpUtil<br>
+如果之前已经初始化，则不需要重复添加
 4、文件下载
 -------
 
+```java
+
+ QxqHttpUtil.onBind()
+            .setDownLoadUrl("your file download url")
+            .setDownLoadFilePath("/testDownLoad")//文件下载后存放的文件夹，注:请在前面添加斜杠
+            .setDownLoadFileName("test.apk")//文件下载后的名字
+            .setDownLoadListener(new OnDownLoadListener() {
+                @Override
+                public void onSuccess() {
+                    ShowToast("下载完成!");
+                    dialog.dismiss();
+                }
+                @Override
+                public void onFailure(String error) {
+                    ShowToast("下载失败!"+error);
+                }
+                @Override
+                public void onLoading(long l, long l1) {
+                    //文件下载进度
+                    int progress = ((int) ((l1 / (float) l) * 100));
+                }
+            })
+            .download();
+
+```
 
 5、文件上传
 -------
 
+* 单个文件上传
+```java
 
+ File file = new File("");
+ QxqHttpUtil.onBind()
+            .setUpLoadFile(file)//需要上传的文件
+            .setUpLoadFileName("")//服务器的文件参数名
+            .setUpLoadUrl("")//上传的地址
+            .setUpLoadListener(new OnUpLoadListener() {
+                @Override
+                public void onSuccess() {
+                    ShowToast("上传成功!");
+                }
+
+                @Override
+                public void onFailure(String error) {
+                    ShowToast("上传失败!"+error);
+                }
+
+                @Override
+                public void onLoading(long total, long progress) {
+                    //进度
+                    int progress2 = ((int) ((total / (float) progress) * 100));
+                }
+            })
+            .upload();
+
+```
+
+* 多文件上传
+```java
+
+Map<String,File> map = new HashMap<String, File>();
+map.put("image0",new File(""));
+map.put("image1",new File(""));
+map.put("image2",new File(""));
+
+QxqHttpUtil.onBind()
+           .setUpLoadFiles(map)//需要上传的文件集
+           .setUpLoadUrl("url")//上传的地址
+           .setUpLoadListener(new OnUpLoadListener() {
+               @Override
+               public void onSuccess() {
+                   ShowToast("上传成功!");
+               }
+
+               @Override
+               public void onFailure(String error) {
+                   ShowToast("上传失败!"+error);
+               }
+
+               @Override
+               public void onLoading(long total, long progress) {
+                   //进度
+                   int progress2 = ((int) ((total / (float) progress) * 100));
+               }
+           })
+           .uploadFiles();
+
+```
+
+* 文件上传 (from表单格式，适用于注册或者修改个人信息用户头像和用户信息一起上传)
+```java
+String url = "your upload url";
+File file = new File("your file path");
+Map<String ,String> map = new HashMap<String, String>();
+map.put("id","123");
+map.put("nickname","test");
+
+QxqHttpUtil.onBind()
+           .setUpLoadFileName("icon")//服务器图片参数名
+           .setUpLoadFile(file)//你需要上传的文件
+           .setUpLoadMap(map)//你的用户信息
+           .setUpLoadUrl(url)//你的上传地址
+           .setUpLoadListener(new OnUpLoadListener() {
+               @Override
+               public void onSuccess() {
+                   ShowToast("上传成功!");
+               }
+
+               @Override
+               public void onFailure(String error) {
+                   ShowToast("上传失败!"+error);
+               }
+
+               @Override
+               public void onLoading(long total, long progress) {
+                   //上传的进度
+                   int progress2 = ((int) ((total / (float) progress) * 100));
+               }
+           })
+           .uploadInfo();
+```
 
 6、程序检查更新
 -------
