@@ -298,11 +298,11 @@ QxqHttpUtil.onBind().post("your url", map, new OnHttpCallBackListener() {
 * 单个文件上传
 ```java
 
- File file = new File("");
  QxqHttpUtil.onBind()
-            .setUpLoadFile(file)//需要上传的文件
+            .setUpLoadFilePath("file path")//需要上传的文件路径
             .setUpLoadFileName("")//服务器的文件参数名
             .setUpLoadUrl("")//上传的地址
+            .setUpLoadIsImage(true)//设置上传的文件是否是图片，默认为true
             .setUpLoadListener(new OnUpLoadListener() {
                 @Override
                 public void onSuccess() {
@@ -335,6 +335,7 @@ map.put("image2",new File(""));
 QxqHttpUtil.onBind()
            .setUpLoadFiles(map)//需要上传的文件集
            .setUpLoadUrl("url")//上传的地址
+           .setUpLoadIsImage(true)//设置上传的文件是否是图片，默认为true
            .setUpLoadListener(new OnUpLoadListener() {
                @Override
                public void onSuccess() {
@@ -359,16 +360,16 @@ QxqHttpUtil.onBind()
 * 文件上传 (from表单格式，适用于注册或者修改个人信息用户头像和用户信息一起上传)
 ```java
 String url = "your upload url";
-File file = new File("your file path");
 Map<String ,String> map = new HashMap<String, String>();
 map.put("id","123");
 map.put("nickname","test");
 
 QxqHttpUtil.onBind()
            .setUpLoadFileName("icon")//服务器图片参数名
-           .setUpLoadFile(file)//你需要上传的文件
+           .setUpLoadFilePath("file path")//你需要上传的文件路径
            .setUpLoadMap(map)//你的用户信息
            .setUpLoadUrl(url)//你的上传地址
+           .setUpLoadIsImage(true)//设置上传的文件是否是图片，默认为true
            .setUpLoadListener(new OnUpLoadListener() {
                @Override
                public void onSuccess() {
