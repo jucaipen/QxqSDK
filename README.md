@@ -395,9 +395,9 @@ QxqHttpUtil.onBind()
 注:服务器返回的json数据应为如下格式
 {
     "data": {
-        "version_number": "1.0",
+        "version": "1.0",
         "url": "your apk downlod url",
-        "content": "your update message"
+        "message": "your update message"
     }
 }
 
