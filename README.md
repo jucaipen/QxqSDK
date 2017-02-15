@@ -269,7 +269,7 @@ QxqHttpUtil.onBind().post("your url", map, new OnHttpCallBackListener() {
 
  QxqHttpUtil.onBind()
             .setDownLoadUrl("your file download url")
-            .setDownLoadFilePath("/testDownLoad")//文件下载后存放的文件夹，注:请在前面添加斜杠
+            .setDownLoadFilePath("/testDownLoad")//文件下载后存放的文件夹
             .setDownLoadFileName("test.apk")//文件下载后的名字
             .setDownLoadListener(new OnDownLoadListener() {
                 @Override
