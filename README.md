@@ -231,12 +231,12 @@ QxqHttpUtil.onBind().get("your url",
                         new OnHttpCallBackListener() {
                             @Override
                             public void onComplete(String json) {
-                                ShowLog("json..."+json);
+                                QxqLogUtil.onBind().i("TAG","json..."+json);
                             }
 
                             @Override
                             public void onError(String error) {
-                                ShowLog("error..."+error);
+                                QxqLogUtil.onBind().i("TAG","error..."+error);
                             }
                         });
 ```
@@ -253,12 +253,12 @@ QxqHttpUtil.onBind().get("your url",
 QxqHttpUtil.onBind().post("your url", map, new OnHttpCallBackListener() {
                     @Override
                     public void onComplete(String json) {
-                        ShowLog("json..."+json);
+                        QxqLogUtil.onBind().i("TAG","json..."+json);
                     }
 
                     @Override
                     public void onError(String error) {
-                        ShowLog("error..."+error);
+                        QxqLogUtil.onBind().i("TAG","error..."+error);
                     }
                 });
 ```
@@ -301,12 +301,12 @@ QxqHttpUtil.onBind().post("your url", map, new OnHttpCallBackListener() {
             .setDownLoadListener(new OnDownLoadListener() {
                 @Override
                 public void onSuccess() {
-                    ShowToast("下载完成!");
+                    QxqToastUtil.onBind().showLongToast("下载完成!");
                     dialog.dismiss();
                 }
                 @Override
                 public void onFailure(String error) {
-                    ShowToast("下载失败!"+error);
+                    QxqToastUtil.onBind().showLongToast("下载失败!"+error);
                 }
                 @Override
                 public void onLoading(long l, long l1) {
@@ -332,12 +332,12 @@ QxqHttpUtil.onBind().post("your url", map, new OnHttpCallBackListener() {
             .setUpLoadListener(new OnUpLoadListener() {
                 @Override
                 public void onSuccess() {
-                    ShowToast("上传成功!");
+                    QxqToastUtil.onBind().showLongToast("上传成功!");
                 }
 
                 @Override
                 public void onFailure(String error) {
-                    ShowToast("上传失败!"+error);
+                    QxqToastUtil.onBind().showLongToast("上传失败!"+error);
                 }
 
                 @Override
@@ -365,12 +365,12 @@ QxqHttpUtil.onBind()
            .setUpLoadListener(new OnUpLoadListener() {
                @Override
                public void onSuccess() {
-                   ShowToast("上传成功!");
+                   QxqToastUtil.onBind().showLongToast("上传成功!");
                }
 
                @Override
                public void onFailure(String error) {
-                   ShowToast("上传失败!"+error);
+                   QxqToastUtil.onBind().showLongToast("上传失败!"+error);
                }
 
                @Override
@@ -399,12 +399,12 @@ QxqHttpUtil.onBind()
            .setUpLoadListener(new OnUpLoadListener() {
                @Override
                public void onSuccess() {
-                   ShowToast("上传成功!");
+                   QxqToastUtil.onBind().showLongToast("上传成功!");
                }
 
                @Override
                public void onFailure(String error) {
-                   ShowToast("上传失败!"+error);
+                   QxqToastUtil.onBind().showLongToast("上传失败!"+error);
                }
 
                @Override
