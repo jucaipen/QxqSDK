@@ -99,7 +99,6 @@ showLongToast(String msg);
 showLongToast(int strRes);
 
 showToast(String msg,int duration);
-showToast(String msg, int duration,int gravity);
 
 调用方法
 1、在程序的Application中初始化ToastUtil
