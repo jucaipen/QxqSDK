@@ -262,6 +262,28 @@ QxqHttpUtil.onBind().post("your url", map, new OnHttpCallBackListener() {
                     }
                 });
 ```
+
+* POST请求上传json
+>>url:你需要请求的url地址
+
+>>json:你需要传递的json
+
+>>OnHttpCallBackListener:请求完成后的回调函数
+```java
+ QxqHttpUtil.onBind().postToJson("your url", "your json", new OnHttpCallBackListener() {
+                    @Override
+                    public void onComplete(String json) {
+                        QxqLogUtil.onBind().i("TAG","json..."+json);
+                    }
+
+                    @Override
+                    public void onError(String error) {
+                        QxqLogUtil.onBind().i("TAG","error..."+error);
+                    }
+                });
+
+```
+
 4、文件下载
 -------
 
