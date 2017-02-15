@@ -264,11 +264,15 @@ QxqHttpUtil.onBind().post("your url", map, new OnHttpCallBackListener() {
 ```
 
 * POST请求上传json
+
+>参数
+
 >>url:你需要请求的url地址
 
 >>json:你需要传递的json
 
 >>OnHttpCallBackListener:请求完成后的回调函数
+
 ```java
  QxqHttpUtil.onBind().postToJson("your url", "your json", new OnHttpCallBackListener() {
                     @Override
@@ -283,6 +287,7 @@ QxqHttpUtil.onBind().post("your url", map, new OnHttpCallBackListener() {
                 });
 
 ```
+
 
 4、文件下载
 -------
