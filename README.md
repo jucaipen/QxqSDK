@@ -2,9 +2,10 @@ QxqSDK
 ====
 
 提供各种基类、工具类、Android6.0动态权限管理、网络请求、文件上传下载、图片选择、应用检查更新等功能，极大的提升了开发的效率<br><br>
-更多功能正在完善中......
+更多功能正在完善中......<br>
 
 
+Demo请见https://github.com/qxq5434/qxqsdkExample
 ------
 
 Android Studio依赖方法
