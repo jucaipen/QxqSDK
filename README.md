@@ -320,6 +320,9 @@ QxqHttpUtil.onBind().post("your url", map, new OnHttpCallBackListener() {
 5、文件上传
 -------
 
+如果上传的是图片(设置setUpLoadIsImage(true))，sdk会自动根据图片大小进行压缩，做到完全一步到位
+
+
 * 单个文件上传
 ```java
 
