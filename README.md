@@ -436,3 +436,36 @@ UpdateManager.init().setContext(getActivity())
                         .setUpdateFileName("")//设置下载后apk的名字
                         .getVersion();
 ```
+
+7、RecyclerView的BaseAdapter
+-------
+
+```java
+//新建一个TestAdapter类继承QxqBaseRecyclerViewAdapter
+//新建一个TestHolder类继承QxqBaseViewHolder
+//在TestHolder里面实现你的业务逻辑
+//详情请见QxqSDKExample
+adapter = new TestAdapter(getActivity());
+adapter.setIsLoadMore(true);//设置是否需要加载更多
+adapter.setPageCount(10);//设置你每页需要显示多少行
+adapter.setOnRecyclerViewListener(onItemClickListener);
+//如果你需要用RecyclerView实现ListView的效果
+LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+//如果你需要用RecyclerView实现GridView的效果
+GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 3);
+adapter.setLoadMore(mRecyclerView, layoutManager, new QxqBaseRecyclerViewAdapter.RecyclerViewLoadMoreCallBack() {
+    @Override
+    public void loadMore() {
+        page ++;
+        //请求数据
+    }
+});
+mRecyclerView.setHasFixedSize(true);
+mRecyclerView.setLayoutManager(layoutManager);
+mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL,R.color.index_item_grey));
+mRecyclerView.setAdapter(adapter);
+
+adapter.update(list,page);
+
+```
